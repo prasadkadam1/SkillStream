@@ -2,6 +2,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateClass from "./pages/CreateClass";
 import JoinClass from "./pages/JoinClass";
+import CalendarPage from "./pages/Calendar";
 
 export default function App() {
   return (
@@ -11,6 +12,8 @@ export default function App() {
         <div className="space-x-4">
           <Link to="/">Home</Link>
           <Link to="/create">Create Class</Link>
+          {/* <Link to="/calendar">Calendar</Link> */}
+          <Link to="/calendar">Calendar</Link>
         </div>
       </nav>
 
@@ -19,6 +22,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreateClass />} />
           <Route path="/join/:roomId" element={<JoinClass />} />
+          {/* <Route path="/calendar" element={<CalendarPage />} /> */}
+          <Route path="/calendar" element={<CalendarPage />} />
         </Routes>
       </main>
     </div>

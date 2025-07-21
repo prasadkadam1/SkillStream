@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function JitsiMeeting({ roomId }) {
+export default function JitsiMeeting({ roomId, displayName }) {
   useEffect(() => {
     const domain = "meet.jit.si";
     const options = {
@@ -9,9 +9,7 @@ export default function JitsiMeeting({ roomId }) {
       height: 600,
       parentNode: document.getElementById("jitsi-container"),
       configOverwrite: { startWithAudioMuted: false },
-      userInfo: {
-        displayName: "Guest User",
-      },
+      userInfo: { displayName },
     };
 
     const script = document.createElement("script");
@@ -19,10 +17,10 @@ export default function JitsiMeeting({ roomId }) {
     script.async = true;
     script.onload = () => {
       const api = new window.JitsiMeetExternalAPI(domain, options);
-      return () => api?.dispose();
+      return () => api.dispose();
     };
     document.body.appendChild(script);
-  }, [roomId]);
+  }, [roomId, displayName]);
 
   return <div id="jitsi-container" className="w-full rounded overflow-hidden" />;
 }
