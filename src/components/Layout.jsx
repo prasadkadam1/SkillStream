@@ -6,7 +6,7 @@ export default function Layout() {
     <div className="flex h-screen bg-gray-50">
       {/* Sidebar */}
       <aside className="w-64 bg-white shadow-lg border-r flex flex-col p-4">
-        <h1 className="text-2xl font-bold text-blue-600 mb-8">📘 TutorMeet</h1>
+        <h1 className="text-2xl font-bold text-blue-600 mb-8">📘 SkillsStream</h1>
 
         <nav className="space-y-4">
           <SidebarLink icon={<Home />} text="Dashboard" to="/" />
@@ -15,7 +15,7 @@ export default function Layout() {
         </nav>
 
         <div className="mt-auto text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} TutorMeet
+          &copy; {new Date().getFullYear()} SkillsStream
         </div>
       </aside>
 
