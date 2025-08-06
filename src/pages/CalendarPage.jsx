@@ -4,11 +4,13 @@ import format from "date-fns/format";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
 import getDay from "date-fns/getDay";
+import enUS from "date-fns/locale/en-US"; // ✅ fixed here!
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useNavigate } from "react-router-dom";
 
+// ✅ updated to use ES module import
 const locales = {
-  "en-US": require("date-fns/locale/en-US"),
+  "en-US": enUS,
 };
 
 const localizer = dateFnsLocalizer({
@@ -25,7 +27,6 @@ export default function CalendarPage() {
   const [title, setTitle] = useState("");
   const navigate = useNavigate();
 
-  // Load saved classes from localStorage
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("classes") || "[]");
     const mapped = stored.map((cls) => ({
@@ -99,12 +100,7 @@ export default function CalendarPage() {
           <h3 className="text-lg font-bold mb-2">
             Create Class on: {selectedSlot.toLocaleString()}
           </h3>
-          {/* <input
-            className="w-full border px-3 py-2 mb-3 rounded"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter class title"
-          /> */}
+
           <div className="mb-3">
             <label className="block text-sm font-medium mb-1">
               Class Title
@@ -116,8 +112,9 @@ export default function CalendarPage() {
               placeholder="e.g., React Basics"
             />
           </div>
+
           <div>
-            <label htmlFor="" className="block text-sm font-medium mb-1">
+            <label className="block text-sm font-medium mb-1">
               Start Time
             </label>
             <input
@@ -131,8 +128,9 @@ export default function CalendarPage() {
               }
             />
           </div>
+
           <button
-            className="bg-blue-600 text-white px-4 py-2 rounded"
+            className="bg-blue-600 text-white px-4 py-2 rounded mt-4"
             onClick={handleCreate}
           >
             Schedule Class
