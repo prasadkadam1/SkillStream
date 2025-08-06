@@ -25,7 +25,6 @@ export default function CreateClass() {
         <p className="text-gray-600 mb-6">
           Fill in the class details below and it will appear in your upcoming schedule.
         </p>
-
         <CreateClassForm />
       </div>
     </div>
