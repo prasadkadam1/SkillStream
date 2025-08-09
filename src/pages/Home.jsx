@@ -81,7 +81,7 @@ const handleDelete = (id) => {
       <h1 className="text-3xl font-bold text-center text-blue-800 mb-10">
         📚 Scheduled Classes
       </h1>
-
+ <button>click</button>
       {classes.length === 0 ? (
         <p className="text-center text-gray-500">
           No classes available. Create your first class now!

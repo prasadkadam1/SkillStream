@@ -1,12 +1,15 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Home, PlusCircle, Calendar, Video } from "lucide-react";
 
 export default function Layout() {
+  let navigate = useNavigate();
   return (
     <div className="flex h-screen bg-gray-50">
       {/* Sidebar */}
       <aside className="w-64 bg-white shadow-lg border-r flex flex-col p-4">
-        <h1 className="text-2xl font-bold text-blue-600 mb-8">📘 SkillsStream</h1>
+        <h1 className="text-2xl font-bold text-blue-600 mb-8">
+          📘 SkillsStream
+        </h1>
 
         <nav className="space-y-4">
           <SidebarLink icon={<Home />} text="Dashboard" to="/" />
@@ -22,6 +25,13 @@ export default function Layout() {
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto">
         <header className="bg-white shadow px-6 py-4 flex justify-between items-center border-b">
+          <button
+            onClick={() => navigate("/create")}
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          >
+            + Create Class
+          </button>
+
           <h2 className="text-xl font-semibold text-gray-800">Dashboard</h2>
           <div className="text-sm text-gray-500">👋 Hello, Prasad!</div>
         </header>

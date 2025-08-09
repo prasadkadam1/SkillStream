@@ -1,24 +1,29 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard"; // ✅ Updated: was 'Home' earlier
 import CreateClass from "./pages/CreateClass";
 import CalendarPage from "./pages/CalendarPage";
-import JoinPage from "./pages/JoinPage";
-import JoinClass from './pages/JoinClass'; // make this component
+import JoinClass from './pages/JoinClass';
 import ClassDetails from "./pages/ClassDetails";
-import EditClass from "./pages/EditClass";
+import CreateClassForm from "./components/CreateClassForm";
+import EditClassModal from "./components/EditClassModal";
+
 function App() {
   return (
     <Routes>
+      {/* Routes inside the layout shell */}
       <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/create" element={<CreateClass />} />
+        <Route path="/" element={<Dashboard />} /> {/* ✅ Changed */}
+        <Route path="/create" element={<CreateClassForm />} />
+        {/* <Route path="/create" element={<CreateClass />} /> */}
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/class/:id" element={<ClassDetails />} />
-        <Route path="/edit/:id" element={<EditClass />} />
+        {/* <Route path="/edit/:id" element={<EditClass />} /> */}
+        <Route path="/edit/:id" element={<EditClassModal />} />
       </Route>
-        <Route path="/join/:roomId" element={<JoinClass />} />
-      {/* <Route path="/join/:roomId" element={<JoinPage />} /> */}
+
+      {/* Standalone route (outside layout shell) */}
+      <Route path="/join/:roomId" element={<JoinClass />} />
     </Routes>
   );
 }
